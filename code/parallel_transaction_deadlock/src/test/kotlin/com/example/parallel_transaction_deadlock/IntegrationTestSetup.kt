@@ -15,11 +15,7 @@ class IntegrationTestSetup {
     @ServiceConnection
     fun mysqlContainer(): MySQLContainer<*> {
         return MySQLContainer(DockerImageName.parse("mysql:8.0.32"))
+            .withInitScript("database/schema.sql")
     }
 
-}
-
-fun main(args: Array<String>) {
-    fromApplication<Application>().with(IntegrationTestSetup::class)
-        .run(*args)
 }
