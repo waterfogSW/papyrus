@@ -21,7 +21,7 @@ class Product(
         private set
 
     @Column
-    var content: String = description
+    var description: String = description
         private set
 
     companion object {

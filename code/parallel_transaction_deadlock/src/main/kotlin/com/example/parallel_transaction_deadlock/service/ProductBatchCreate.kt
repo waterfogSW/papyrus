@@ -11,8 +11,8 @@ class ProductBatchCreate(
         val results: List<ProductCreateUseCase.Result> = commands.map {
             productCreateUseCase.invoke(
                 command = ProductCreateUseCase.Command(
-                    name = it.title,
-                    content = it.content
+                    name = it.name,
+                    content = it.description
                 )
             )
         }
@@ -31,7 +31,7 @@ class ProductBatchCreate(
 
     private fun mapToFailure(result: ProductCreateUseCase.Result.Failure): ProductBatchCreateUseCase.Result.Failure {
         return ProductBatchCreateUseCase.Result.Failure(
-            title = result.title,
+            name = result.title,
             message = result.message,
         )
     }

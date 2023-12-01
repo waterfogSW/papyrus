@@ -32,11 +32,11 @@ dependencies {
     // kotest
     testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.0")
 
     // mockk
     testImplementation("io.mockk:mockk:1.13.8")
-    testImplementation("io.mockk:mockk-spring:1.13.8")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 
     // test containers

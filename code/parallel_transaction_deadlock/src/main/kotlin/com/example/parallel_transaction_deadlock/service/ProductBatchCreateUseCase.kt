@@ -7,14 +7,14 @@ interface ProductBatchCreateUseCase {
     fun invoke(commands: List<Command>): List<Result>
 
     data class Command(
-        val title: String,
-        val content: String,
+        val name: String,
+        val description: String,
     )
 
     sealed class Result {
         data class Success(val postId: PostId) : Result()
         data class Failure(
-            val title: String,
+            val name: String,
             val message: String
         ) : Result()
     }
