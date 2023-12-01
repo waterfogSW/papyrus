@@ -1,0 +1,10 @@
+spring:
+  docker:
+    compose:
+      enabled: true
+      file: ./code/parallel_transaction_deadlock/compose.yaml
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
