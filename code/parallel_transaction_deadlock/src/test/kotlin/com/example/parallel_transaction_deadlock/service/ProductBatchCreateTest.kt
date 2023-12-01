@@ -26,7 +26,7 @@ class ProductBatchCreateTest(
         val results: List<ProductBatchCreateUseCase.Result> = sut.invoke(commands)
 
         // then
-        results.size shouldBe 10
+        results.filterIsInstance<ProductBatchCreateUseCase.Result.Success>().size shouldBe 10
     }
 
     test("제품 배치 생성 시간 측정") {
