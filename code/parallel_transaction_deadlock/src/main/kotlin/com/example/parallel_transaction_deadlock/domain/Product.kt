@@ -25,10 +25,13 @@ class Product(
         private set
 
     companion object {
-        fun create(name: String, content: String): Product {
+        fun create(
+            name: String,
+            description: String
+        ): Product {
             return Product(
                 name = name,
-                description = content,
+                description = description,
             )
         }
     }

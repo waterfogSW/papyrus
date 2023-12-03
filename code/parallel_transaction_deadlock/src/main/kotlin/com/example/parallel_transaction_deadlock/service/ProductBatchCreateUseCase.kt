@@ -4,7 +4,7 @@ import com.example.parallel_transaction_deadlock.domain.PostId
 
 interface ProductBatchCreateUseCase {
 
-    fun invoke(commands: List<Command>): List<Result>
+    suspend fun invoke(commands: List<Command>): List<Result>
 
     data class Command(
         val name: String,

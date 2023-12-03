@@ -8,7 +8,7 @@ interface ProductCreateUseCase {
 
     data class Command(
         val name: String,
-        val content: String,
+        val description: String,
     )
 
     sealed class Result {

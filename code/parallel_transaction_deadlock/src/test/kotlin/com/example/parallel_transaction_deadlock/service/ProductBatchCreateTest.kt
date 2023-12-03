@@ -18,7 +18,7 @@ class ProductBatchCreateTest(
         val commands: List<ProductBatchCreateUseCase.Command> = (0 until 10).map {
             ProductBatchCreateUseCase.Command(
                 name = "제품 $it",
-                description = "제품 $it 설명"
+                description = "제품 설명 $it"
             )
         }
 
@@ -30,15 +30,14 @@ class ProductBatchCreateTest(
     }
 
     test("제품 배치 생성 시간 측정") {
-        // given
-        val commands: List<ProductBatchCreateUseCase.Command> = (0 until 10).map {
+
+        val commands: List<ProductBatchCreateUseCase.Command> = (0 until 1000).map {
             ProductBatchCreateUseCase.Command(
                 name = "제품 $it",
-                description = "제품 $it 설명"
+                description = "제품 설명 $it"
             )
         }
 
-        // when, then
         measureTimeMillis { sut.invoke(commands) }
             .also { time -> println("제품 배치 생성 시간: $time ms") }
     }

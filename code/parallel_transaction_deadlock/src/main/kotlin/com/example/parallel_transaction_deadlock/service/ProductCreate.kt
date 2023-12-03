@@ -15,7 +15,7 @@ class ProductCreate(
     override fun invoke(command: ProductCreateUseCase.Command): ProductCreateUseCase.Result {
         val product: Product = Product.create(
             name = command.name,
-            content = command.content,
+            description = command.description,
         )
 
         if (isDuplicateTitle(product.name)) {
@@ -31,6 +31,6 @@ class ProductCreate(
     }
 
     private fun isDuplicateTitle(title: String): Boolean {
-        return productRepository.existsByName(title)
+        return productRepository.findByName(title) != null
     }
 }
