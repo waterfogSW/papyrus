@@ -11,6 +11,7 @@ class ProductCreate(
     private val productRepository: ProductRepository
 ) : ProductCreateUseCase {
 
+    @Synchronized
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun invoke(command: ProductCreateUseCase.Command): ProductCreateUseCase.Result {
         val product: Product = Product.create(

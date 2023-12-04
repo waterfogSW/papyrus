@@ -31,7 +31,7 @@ class ProductBatchCreateTest(
 
     test("제품 배치 생성 시간 측정") {
 
-        val commands: List<ProductBatchCreateUseCase.Command> = (0 until 1000).map {
+        val commands: List<ProductBatchCreateUseCase.Command> = (0 until 10000).map {
             ProductBatchCreateUseCase.Command(
                 name = "제품 $it",
                 description = "제품 설명 $it"

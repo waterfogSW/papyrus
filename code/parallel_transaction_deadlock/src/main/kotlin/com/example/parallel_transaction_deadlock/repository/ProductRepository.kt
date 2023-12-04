@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.Query
 
 interface ProductRepository : JpaRepository<Product, Long> {
 
-    @Query("select * from product p where p.name = :name for update", nativeQuery = true)
     fun findByName(name: String): Product?
 }

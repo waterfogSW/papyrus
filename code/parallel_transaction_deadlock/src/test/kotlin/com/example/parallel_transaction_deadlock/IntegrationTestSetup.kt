@@ -14,6 +14,7 @@ class IntegrationTestSetup {
     fun mysqlContainer(): MySQLContainer<*> {
         return MySQLContainer(DockerImageName.parse("mysql:8.0.32"))
             .withInitScript("database/schema.sql")
+            .withCommand("--binlog_format=ROW --transaction-isolation=READ-COMMITTED")
     }
 
 }
