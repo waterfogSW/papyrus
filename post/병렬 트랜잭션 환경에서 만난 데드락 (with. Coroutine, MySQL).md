@@ -296,7 +296,7 @@ Record lock, heap no 8 PHYSICAL RECORD: n_fields 2; compact format; info bits 0_
 
 이때 각 트랜잭션은 이후 삽입쿼리를 위해 삽입 의도 락(insert intention lock)을 획득하려 하는데 이는 갭락과 호환되지 않기 때문에 두 트랜잭션이 서로의 갭 락을 기다리게 되고, 트랜잭션이 끝나지 않으므로 gap lock을 획득하지 못한 상태가 유지되며 데드락이 발생하게 된 것 입니다.
 
-Gap lock으로 인한 데드락을 없애기 위해서는 Repeatable Read격리수준을 사용해 Gap락을 명시적으로 사용하지 않도록 하면 됩니다.
+단순히 Gap lock으로 인한 데드락을 없애기 위해서는 Repeatable Read격리수준을 사용해 Gap락을 명시적으로 사용하지 않도록 하면 됩니다.
 
 Repeatable Read 격리수준에서는 트랜잭션이 시작될 때 읽은 데이터가 트랜잭션이 종료될 때까지 변경되지 않음을 보장합니다. 이를 위해서는 다른 트랜잭션이 특정 간격에 데이터를 삽입 하지 않음이 보장되어야 하는데, MySQL에서는 이를 갭락으로 해결합니다.
 
@@ -304,7 +304,7 @@ Repeatable Read 격리수준에서는 트랜잭션이 시작될 때 읽은 데�
 
 ## Synchronized 키워드 사용
 ---
-select ... for update는Read Committed 레벨에서 어떠한 잠금도 발생시키지 않기때문에, 여전히 중복된 값을 삽입하여 `DataIntegrityViolationException`을 발생시키게 됩니다. 또한 Repeatable Read 레벨에서는 앞서 보았던 바와 같이 Deadlock을 발생시켰습니다.
+하지만 select ... for update는Read Committed 레벨에서 어떠한 잠금도 발생시키지 않기때문에, 여전히 중복된 값을 삽입하여 `DataIntegrityViolationException`을 발생시키게 됩니다. 또한 Repeatable Read 레벨에서는 앞서 보았던 바와 같이 Deadlock을 발생시켰습니다.
 
 이후 생각한 방법은 애플리케이션 레벨에서 완전히 로직을 제어하기 위해 validation로직을 구현한 것이니 분산락을 활용하거나, synchronized 키워드를 사용하는것이었는데, 보다 공수가 덜드는 방식인 synchronized 키워드를 통해 애플리케이션 레벨의 락을 잡는것이 좋겠다는 판단했습니다.
 
