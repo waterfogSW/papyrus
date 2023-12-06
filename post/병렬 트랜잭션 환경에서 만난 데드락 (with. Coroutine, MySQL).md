@@ -370,7 +370,10 @@ class ProductCreate(
 
 ```
 
-**데이터 10,000개 생성 시간: 39503 ms**
+```
+데이터 10,000개 생성 시간: 39503 ms
+```
+
 
 
 ### 개선된 코드
@@ -437,4 +440,16 @@ class ProductCreate(
 }
 ```
 
-**데이터 10,000개 생성 시간: 16004 ms**
+```
+데이터 10,000개 생성 시간: 16004 ms
+```
+
+synchronized는 분산 시스템 환경에서는 사용할 수 없다. 분산시스템 환경에서는 redis나 named lock을 활용하는 등의 방식으로 **분산락**을 구현해야 한다. named lock을 사용할경우에는 별도로 connection pool을 분리해야한다.
+
+전체 코드
+https://github.com/waterfogSW/papyrus/tree/main/code/parallel_transaction_deadlock
+
+## Reference
+---
+- https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html#innodb-gap-locks
+- https://medium.com/daangn/mysql-gap-lock-%EB%8B%A4%EC%8B%9C%EB%B3%B4%EA%B8%B0-7f47ea3f68bc
