@@ -3,7 +3,6 @@ tags:
   - Stock
   - NASDAQ
 ---
-
 ## 기업개요
 
 "지속 가능한 에너지로의 전 세계적 전환을 가속화합니다." 테슬라 홈페이지에 들어가자마자 볼 수 있는 첫 문구다. 테슬라는 전기자동차 시장을 넘어서 에너지의 생산, 유통, 저장, 소비의 통합 기업으로 성장을 주도하고 있다. 
@@ -70,3 +69,7 @@ https://www.thescoop.co.kr/news/articleView.html?idxno=56770
 
 ## Reference
 - 노상규, [테슬라 비즈니스] [테슬라 애자일: 혁신의 속도와 변화의 한계 비용](https://organicmedialab.com/2023/02/15/tesla-agile-pace-of-innovation/)_,_ 오가닉 미디어랩, 2023, [https://organicmedialab.com/2023/02/15/tesla-agile-pace-of-innovation/](https://organicmedialab.com/2023/02/15/tesla-agile-pace-of-innovation/)
+
+- 주력사업 : 비중
+- 
+	- 

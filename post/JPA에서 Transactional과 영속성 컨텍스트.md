@@ -1,3 +1,12 @@
+---
+tags:
+  - Backend
+  - Spring
+  - JPA
+  - Transactional
+---
+
+
 ![[PastedImageKakao231215.png]]
 
 최근에 지인에게 테스트코드에서 Transactional 어노테이션을 붙이면 테스트가 성공하고, 어노테이션을 제거하면 테스트가 실패하는데 그 이유를 모르겠다는 질문을 받았다. 
