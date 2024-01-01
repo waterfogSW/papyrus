@@ -7,14 +7,7 @@ OOP는 객체를 중심으로 데이터와 기능을 캡슐화하고, 상속과 
 ## AOP 의 원리
 ![[Pasted image 20231227235512.png]]
 AOP 는 주로 프록시 패턴을 활용해 구현됩니다. 클라이언트의 요청은 실제 객체를 향하는 것이 아니라 생성된 프록시 객체를 향하게 되고, 프록시 객체는 실제 객체의 핵심기능을 호출하고, 호출 전후에 부가기능을 수행하는 방식으로 동작하게 됩니다.
-
-## AOP 를 적용한 기술
-
-AOP 를 적용하기 위해서는 크게 두가지 방법을 사용할 수 있다.
-- 프록시를 활용한 AOP
-- AspectJ를 활용한 AOP
-
-### 프록시를 활용한 AOP
+## 스프링 AOP
 
 ![[Pasted image 20231227211945.png]]
 
@@ -36,4 +29,12 @@ AOP 를 적용하기 위해서는 크게 두가지 방법을 사용할 수 있�
 
 ProxyFactoryBean이 생성하는 부가기능은 MethodInterceptor인터페이스를 구현해서 만든다. InvocationHandler와 비슷하지만, ProxyFactoryBean으로 부터 타깃 오브젝트에 대한 정보를 함께 제공받기 때문에 타깃 오브젝트에 상관없이 독립적으로 만들어져 타깃이 다른 여러 프록시에서 함께 사용할 수 있고, 싱글톤 빈으로도 등록 가능하다.
 
-ProxyFactoryBean는 InvocationHandler대신 MethodInterceptor를 구현하는데, MethodInterceptor에는 메서도 정보와 함께 타깃 오브젝트가 담긴 MethodInvocation 오브젝트가 전달된다. MethodInvocation은 일종의 콜백 오브젝트로, proceed() 메소드를 실행하면 타킷 오브젝트의 메소드를 내부적으로 실행한다. 
+ProxyFactoryBean는 InvocationHandler대신 MethodInterceptor를 구현하는데, MethodInterceptor에는 메서도 정보와 함께 타깃 오브젝트가 담긴 MethodInvocation 오브젝트가 전달된다. MethodInvocation은 일종의 콜백 오브젝트로, proceed() 메소드를 실행하면 타깃 오브젝트의 메소드를 내부적으로 실행한다. 
+
+어드바이저 = 어드바이스(순수 부가기능) + 포인트컷(부가 기능 적용대상 메소드 선정방법)
+
+AspectJ 포인트컷 표현식을 활용하는 포인트컷은 스트링으로 된 표현식을 담은 expression 프로퍼티 하나만 설정해주면 사용할 수 있다.
+## AOP 를 적용한 기술
+
+- 프록시
+- 
