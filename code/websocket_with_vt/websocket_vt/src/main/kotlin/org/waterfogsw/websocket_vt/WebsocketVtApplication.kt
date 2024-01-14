@@ -1,11 +1,11 @@
-package com.example.parallel_transaction_deadlock
+package org.waterfogsw.websocket_vt
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class Application
+class WebsocketVtApplication
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<WebsocketVtApplication>(*args)
 }
