@@ -244,7 +244,8 @@ class UserSilDomainServiceIntegrationTest(
 })
 
 ```
-![[Pasted image 20240224165109.png]]
+
+![img2](https://github.com/waterfogSW/papyrus/assets/28651727/693e84a9-3a48-41b2-989d-7b306f2279c1)
 
 락이 적용되어있지 않을때에는 동시성 문제가 발생해 포인트가 기댓값에 미치지 못해 테스트가 실패했습니다.
 
@@ -263,13 +264,13 @@ override fun incrementByUserId(
 }
 ```
 
-![[Pasted image 20240224165303.png]]
+![img1](https://github.com/waterfogSW/papyrus/assets/28651727/fc9d7b14-3605-44ff-8572-1f458604801b)
 분산락을 적용했을때는 기댓값만큼 포인트가 증가해 테스트가 성공하는것을 확인할 수 있었습니다.
 
 
 ## 단위테스트는 어떻게 처리해야하나?
 
-이렇게 trailing lambdas문법을 통해 분산락을 적용하게 되면, DistributedLockAspect에 의존하고 있어 해당 컴포넌트가 스프링 빈으로 등록되지 않는 유닛테스트 환경에서는 에러가 발생하게 됩니다. 이때는 mockk라이브러리를 활용해 DistributedLock에 대한 Static Mocking을 통해 해결할 수 있습니다.
+이렇게 trailing lambdas문법을 통해 분산락을 적용하게 되면, DistributedLockAspect에 의존하고 있어 해당 컴포넌트가 스프링 빈으로 등록되지 않는 유닛테스트 환경에서는 에러가 발생하게 됩니다. 이때는 mockk라이브러리를 활용해 DistributedLock에 대한 모킹을 통해 해결할 수 있습니다.
 
 ```kotlin
 	beforeTest {
