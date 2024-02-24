@@ -267,6 +267,23 @@ override fun incrementByUserId(
 분산락을 적용했을때는 기댓값만큼 포인트가 증가해 테스트가 성공하는것을 확인할 수 있었습니다.
 
 
+## 단위테스트는 어떻게 처리해야하나?
+
+이렇게 trailing lambdas문법을 통해 분산락을 적용하게 되면, DistributedLockAspect에 의존하고 있어 해당 컴포넌트가 스프링 빈으로 등록되지 않는 유닛테스트 환경에서는 에러가 발생하게 됩니다. 이때는 mockk라이브러리를 활용해 DistributedLock에 대한 Static Mocking을 통해 해결할 수 있습니다.
+
+```kotlin
+	beforeTest {
+        mockkStatic("com.studentcenter.weave.support.lock.DistributedLockKt")
+        every {
+            distributedLock<Any?>(any(), any(), any(), any(), captureLambda())
+        } answers {
+            val lambda: () -> Any? = arg<(()-> Any?)>(4)
+            lambda()
+        }
+    }
+```
+
+
 ## 마치며
 
 Kotlin의 Trailing Lambdas를 활용한 분산락 구현은 Spring AOP의 한계를 극복하고, 더 안정적이고 유지보수가 쉬운 코드를 작성할 수 있게 만들어 주었습니다. Kotlin의 풍부한 언어 기능을 활용하여, 분산 시스템에서의 동시성 관리를 더 효율적으로 수행할 수 있었습니다.
